@@ -1,0 +1,49 @@
+<!-- <p>navbar works!</p> -->
+<mat-toolbar color="accent">
+  <a
+    routerLink="/"
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  >
+    <mat-icon>menu_book</mat-icon>
+  </a>
+  <span>Exam Portal</span>
+  <span class="example-spacer"></span>
+  <a
+    *ngIf="!isLoggedIn"
+    [routerLink]="'/login'"
+    mat-icon-button
+    class="material-symbols-outlined"
+    aria-label="icon-button with login icon"
+  >
+    <mat-icon>login</mat-icon>
+  </a>
+  <a
+    *ngIf="!isLoggedIn"
+    [routerLink]="'/signup'"
+    mat-icon-button
+    class="material-symbols-outlined"
+    aria-label="icon-button with person add"
+  >
+    <mat-icon> person_add</mat-icon>
+  </a>
+  <a
+    (click)="logout()"
+    *ngIf="isLoggedIn"
+    mat-icon-button
+    class="material-symbols-outlined"
+    aria-label="icon-button with logout icon"
+  >
+    <mat-icon>logout</mat-icon>
+  </a>
+  <button
+    *ngIf="isLoggedIn && user"
+    mat-stroked-button
+    routerLink="/admin/profile"
+    class="material-symbols-outlined"
+    aria-label="icon-button with logout icon"
+  >
+    {{ user.username }}
+  </button>
+</mat-toolbar>
