@@ -1,0 +1,14 @@
+<mat-card>
+  <mat-action-list>
+    <div matSubheader>Available Categories</div>
+    <button routerLink="/user-dashboard/0" mat-list-item>
+      <mat-icon matListItemIcon>quiz</mat-icon>All Quizzes
+    </button>
+    @for (c of categories; track categories) {
+    <button [routerLink]="'/user-dashboard/'+c.cid" mat-list-item>
+      <mat-icon matListItemIcon>quiz</mat-icon>{{ c.title }}
+    </button>
+    }
+  </mat-action-list>
+</mat-card>
+<!-- {{categories | json}} -->

@@ -1,0 +1,28 @@
+.truncate{
+    display: block;
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.example-header-image {
+    background-image: url('../../../../brain.png');
+    background-size: cover;
+  }
+  .emt{
+    color: gray;
+    font-style: italic;  
+}
+.w400{
+    width: 400px;
+}
+.img{
+    background-image: url('../../../../no-results.png');
+    background-size: cover;
+}
+p{
+    display: run-in;
+}
+.dv{
+    display: inline-block;
+}
