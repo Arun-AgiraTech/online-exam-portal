@@ -9,3 +9,7 @@
     text-align: left;
     width: 100%; */
 }
+.footer :hover {
+    color: white;
+    background-color: black;
+}

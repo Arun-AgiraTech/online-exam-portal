@@ -40,7 +40,7 @@
   <button
     *ngIf="isLoggedIn && user"
     mat-stroked-button
-    routerLink="/admin/profile"
+    [routerLink]="'/admin/profile'"
     class="material-symbols-outlined"
     aria-label="icon-button with logout icon"
   >
