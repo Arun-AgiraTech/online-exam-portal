@@ -1,19 +1,89 @@
-.profile-image{
-    max-width: 20%;
-    max-height: 20%;
-    border: 2px solid #ff4081;
-    border-radius:50%;
+.profile-image {
+  max-width: 20%;
+  max-height: 20%;
+  border: 2px solid #ff4081;
+  border-radius: 50%;
 }
 
-.table{
-    width: 100%;
-    border-collapse: collapse;
+.table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.table tr td{
-    padding: 20px 20px; 
-    border: 0.5px solid #e2e2e2;
+.table tr td {
+  padding: 20px 20px;
+  border: 0.5px solid #e2e2e2;
 }
-.text-center{
-    text-align: center;
+.jc {
+  justify-content: center;
+}
+.avatar-container {
+  position: relative;
+  width: fit-content;
+  padding-left: 440px;
+}
+.box-shadow-avatar {
+  box-shadow: 0 10px 20px 20px #6c93001a;
+}
+
+.image-container {
+  height: 200px;
+  width: 200px;
+  z-index: 1;
+  border-radius: 50%;
+  background-color: #fff;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0 10px 20px 20px #6c93001a;
+
+  &.avatar-placeholder {
+    background-image: url("https://img.freepik.com/premium-vector/user-profile-icon-flat-style-member-avatar-vector-illustration-isolated-background-human-permission-sign-business-concept_157943-15752.jpg?size=338&ext=jpg&ga=GA1.1.1395880969.1710201600&semt=ais");
+  }
+}
+
+.icon-wrapper {
+  label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  input[type="file"] {
+    display: none;
+  }
+}
+.icon-wrapper {
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  padding: 0.35rem;
+  background-color: #2962ff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 0;
+  top: 75%;
+  z-index: 2;
+  cursor: pointer;
+
+  &:hover {
+    transition: all 0.25s;
+    background-color: darken(#2962ff, 15%);
+  }
+
+  .icon {
+    color: white;
+  }
+
+  label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  input[type="file"] {
+    display: none;
+  }
 }

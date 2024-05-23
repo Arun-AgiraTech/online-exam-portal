@@ -1,8 +1,9 @@
 import { LocationStrategy } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { QuestionService } from '../../../services/question.service';
 import Swal from 'sweetalert2';
+import { HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-start',
@@ -10,7 +11,6 @@ import Swal from 'sweetalert2';
   styleUrl: './start.component.css',
 })
 export class StartComponent implements OnInit {
-
   qid: any;
   questions: any;
   marksGot: any = 0;
@@ -21,7 +21,8 @@ export class StartComponent implements OnInit {
   constructor(
     private locationSt: LocationStrategy,
     private _route: ActivatedRoute,
-    private _question: QuestionService
+    private _question: QuestionService,
+    private router: Router
   ) {}
   ngOnInit(): void {
     this.preventBackButton();
@@ -45,9 +46,11 @@ export class StartComponent implements OnInit {
     });
   }
   preventBackButton() {
-    history.pushState(null, '', location.href);
-    this.locationSt.onPopState(() => {
-      history.pushState(null, '', location.href);
+    history.pushState(null, '', window.location.href);
+    this.router.events.subscribe((event: any) => {
+      if (event instanceof NavigationStart) {
+        history.pushState(null, '', window.location.href);
+      }
     });
   }
   submitQuiz() {
@@ -81,40 +84,41 @@ export class StartComponent implements OnInit {
     let ss = this.timer - mm * 60;
     return `${mm} min : ${ss} sec`;
   }
-   evalQuiz() 
-   { 
-    // call to server 
+  evalQuiz() {
+    // call to server
     this._question.evalQuiz(this.questions).subscribe({
-      next : (data : any) => {
-        console.log(data);
+      next: (data: any) => {
+        // console.log(data);
         this.marksGot = parseFloat(Number(data.marksGot).toFixed(2));
         this.correctAnswers = data.correctAnswers;
         this.attempted = data.attempted;
         this.isSubmit = true;
       },
-      error : (e)=>{
+      error: (e) => {
         console.log(e);
-      }
-    })
-  //   this.isSubmit = true;
-  //         this.questions.forEach((q: any) => {
-  //           if (q.givenAnswer == q.answer) {
-  //             this.correctAnswers++;
-  //             let marksSingle =
-  //               this.questions[0].quiz.maxMarks / this.questions.length;
-  //             this.marksGot += marksSingle;
-  //           }
-  //           if (q.givenAnswer && q.givenAnswer.trim() != '') {
-  //             this.attempted++;
-  //           }
-  //         });
-  //         console.log('Correct Answers : ' + this.correctAnswers);
-  //         console.log('Marks got : ' + this.marksGot);
-  //         console.log('Attempted : ' + this.attempted);
+      },
+    });
+    //   this.isSubmit = true;
+    //         this.questions.forEach((q: any) => {
+    //           if (q.givenAnswer == q.answer) {
+    //             this.correctAnswers++;
+    //             let marksSingle =
+    //               this.questions[0].quiz.maxMarks / this.questions.length;
+    //             this.marksGot += marksSingle;
+    //           }
+    //           if (q.givenAnswer && q.givenAnswer.trim() != '') {
+    //             this.attempted++;
+    //           }
+    //         });
+    //         console.log('Correct Answers : ' + this.correctAnswers);
+    //         console.log('Marks got : ' + this.marksGot);
+    //         console.log('Attempted : ' + this.attempted);
   }
   printPage() {
-    window.print(); 
+    window.print();
+  }
+  @HostListener('window:popstate', ['$event'])
+  onPopState(event: any) {
+    history.pushState(null, '', window.location.href);
   }
 }
-
-

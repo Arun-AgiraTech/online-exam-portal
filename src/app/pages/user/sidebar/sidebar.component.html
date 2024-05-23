@@ -11,4 +11,6 @@
     }
   </mat-action-list>
 </mat-card>
+<ngb-alert class="mt20" *ngIf="categories" [type]="'primary'"><span class="text">Quizzes available</span></ngb-alert>
+<ngb-alert class="mt20" *ngIf="!categories" [type]="'danger'"><span class="text">Error Loading from Server</span></ngb-alert>
 <!-- {{categories | json}} -->

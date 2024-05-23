@@ -24,12 +24,12 @@ export class LoginService {
 
   //login user : set token in local storage
   public loginUser(token:any){
-    localStorage.setItem('token',token);
+    sessionStorage.setItem('token',token);
   }
 
   //isLogin: user  is logged in or not
   public isLoggedIn(){
-    let tokenStr = localStorage.getItem('token');
+    let tokenStr = sessionStorage.getItem('token');
     if(tokenStr==undefined || tokenStr == '' || tokenStr == null){
       return false;
     }else{
@@ -39,25 +39,25 @@ export class LoginService {
   //logout : remove token from local storage 
   public logout(){
     //if(this.isLoggedIn()){
-     localStorage.removeItem('token');
-     localStorage.removeItem('user');
-    return true; 
+     sessionStorage.removeItem('token');
+     sessionStorage.removeItem('user');
+    return true;
   }
 
   //get token 
   public getToken(){
-    return localStorage.getItem('token');
+    return sessionStorage.getItem('token');
   }
 
   //set userDetail
   public setUser(user : any){
-    localStorage.setItem('user',JSON.stringify(user));
+    sessionStorage.setItem('user',JSON.stringify(user));
   }
 
   //getUser
   public getUser(){
-    console.log(localStorage);
-    let userStr = localStorage.getItem('user');
+    console.log(sessionStorage);
+    let userStr = sessionStorage.getItem('user');
     if(userStr!=null){
       return JSON.parse(userStr);
     }else{

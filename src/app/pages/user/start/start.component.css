@@ -1,3 +1,14 @@
 .jc{
     justify-content: center;
 }
+input[type="radio"] { 
+    /* -ms-transform: scale(1.5); IE 9 */
+    /* -webkit-transform: scale(1.5); Chrome, Safari, Opera
+    /* transform: scale(1.5); */
+    margin-top: -3px;
+    margin-right: 5px;
+    vertical-align: middle; 
+  }
+  label{
+    font-size:20px;
+  }

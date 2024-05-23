@@ -26,7 +26,6 @@
             </mat-form-field> -->
             <ckeditor
               [editor]="Editor"
-              [data]="placeHolder"
               name = "content"
               [(ngModel)] = "question.content"
             ></ckeditor>
@@ -112,7 +111,7 @@
               </mat-select>
             </mat-form-field>
             <div class="container text-center">
-              <button mat-stroked-button color="accent">Add</button>
+              <button mat-raised-button color="accent">Add</button>
             </div>
           </form>
         </mat-card-content>

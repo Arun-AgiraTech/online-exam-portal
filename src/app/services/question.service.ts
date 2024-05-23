@@ -27,6 +27,16 @@ export class QuestionService {
   public deleteQuestion(questionId:number){
     return this._http.delete(`${baseUrl}/question/${questionId}`);
   }
+
+  //update question
+  public updateQuestion(question : any){
+    return this._http.put(`${baseUrl}/question/`,question)
+  }
+
+  //get single question
+  public getSingleQuestion(quesId:any){
+    return this._http.get(`${baseUrl}/question/${quesId}`)
+  }
   
   //eval quiz
   public evalQuiz(questions : any)

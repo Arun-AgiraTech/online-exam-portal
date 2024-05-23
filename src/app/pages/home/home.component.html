@@ -2,8 +2,16 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 offset-md-3 text-center">
-        <h1>Welcome to Exam Portal</h1>
-        <button mat-raised-button color="accent">Home Page</button>
+            <ngb-alert class="mt20" [type]="'info'"><span class="text">Welcome To Exam Portal</span></ngb-alert>
+        <br>
+        <mat-card>
+          <mat-card-content>
+            <img src="../../../assets/image5.png" alt="">
+              <h1 class="main">Exam Portal</h1>
+          </mat-card-content>
+        </mat-card>
+        <button mat-raised-button [routerLink]="'/login'" class="mt20 mu20" color="accent">Got to Login</button>
+        <button mat-raised-button [routerLink]="'/signup'" class="mt20 mu20 ml20" color="primary">Got to Registration</button>
       </div>
     </div>
   </div>

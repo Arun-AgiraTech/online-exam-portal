@@ -7,35 +7,35 @@
       </div>
       @for(q of questions;let i = $index;track q){
       <mat-card class="mt20">
-        <mat-card-content>
+        <mat-card-content class="mt20">
           <br />
-          <p>
+          <h1>
             <b>Q.{{ i + 1 }})</b
             ><span class="ml20" [innerHTML]="q.content"></span>
-          </p>
+            </h1>
           <div class="container-fluid">
             <div class="row">
               <div class="col-md-6">
-                <p><b>1)</b> {{ q.option1 }}</p>
+                <h2><b>1)</b> {{ q.option1 }}</h2>
               </div>
               <div class="col-md-6">
-                <p><b>2)</b> {{ q.option2 }}</p>
+                <h2><b>2)</b> {{ q.option2 }}</h2>
               </div>
             </div>
             <div class="row">
               <div class="col-md-6">
-                <p><b>3)</b> {{ q.option3 }}</p>
+                <h2><b>3)</b> {{ q.option3 }}</h2>
               </div>
               <div class="col-md-6">
-                <p><b>4)</b> {{ q.option4 }}</p>
+                <h2><b>4)</b> {{ q.option4 }}</h2>
               </div>
             </div>
           </div>
-          <p class="mt20"><b>Correct Answer:</b> {{ q.answer }}</p>
+          <h2 class="mt20"><b>Correct Answer:</b> {{ q.answer }}</h2>
           <mat-card-actions>
             <button mat-button (click)="deleteQuestion(q.quesId)" color="warn">Delete</button>
             &nbsp;&nbsp;
-            <button mat-button color="primary">Update</button>
+            <button mat-button [routerLink]="'/admin/update-question/'+q.quesId" color="primary">Update</button>
           </mat-card-actions>
         </mat-card-content>
         <mat-divider></mat-divider>

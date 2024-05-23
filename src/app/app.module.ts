@@ -12,7 +12,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { LoginComponent } from './pages/login/login.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { HomeComponent } from './pages/home/home.component';
 import {MatCardModule} from '@angular/material/card';
@@ -43,6 +43,20 @@ import { InstructionsComponent } from './pages/user/instructions/instructions.co
 import { StartComponent } from './pages/user/start/start.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
+import {MatRadioModule} from '@angular/material/radio';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbAlert } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrModule } from 'ngx-toastr';
+import { PageLoaderComponent } from './components/page-loader/page-loader.component';
+// import { LoadingInterceptor } from './services/loading.interceptor';
+import { UpdateQuestionComponent } from './pages/admin/update-question/update-question.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { CalenderComponent } from './components/calender/calender.component';
+import { ImageCropperComponent } from './components/image-cropper/image-cropper.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [
@@ -67,7 +81,12 @@ import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
     UserSidebar,
     LoadQuizComponent,
     InstructionsComponent,
-    StartComponent
+    StartComponent,
+    PageLoaderComponent,
+    UpdateQuestionComponent,
+    CalenderComponent,
+    ImageCropperComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -92,12 +111,29 @@ import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
     NgxUiLoaderModule,
     NgxUiLoaderHttpModule.forRoot({
       showForeground : true,
-    })
+    }),
+    MatRadioModule,
+    NgbModule,
+    NgbAlert,
+    ToastrModule.forRoot({
+      timeOut: 5000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+      closeButton:true,}),
+      CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
   ],
   providers: [
     provideClientHydration(),
     provideAnimationsAsync(),
-    authInterceptorProviders
+    authInterceptorProviders,
+    // {
+    //   provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true
+    // }
+    MatDialogModule,
+    MatDialog
   ],
   bootstrap: [AppComponent]
 })

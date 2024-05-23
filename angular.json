@@ -35,11 +35,16 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css",
-              "/home/agira/Trainee/Fullstack_Projects/examfront/node_modules/bootstrap-grid-only-css/dist/css/bootstrap-grid.min.css"
+              "/home/agira/Trainee/Fullstack_Projects/examfront/node_modules/ngx-toastr/toastr.css",
+              "/home/agira/Trainee/Fullstack_Projects/examfront/node_modules/bootstrap-grid-only-css/dist/css/bootstrap-grid.min.css",
+              "node_modules/cropperjs/dist/cropper.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/cropperjs/dist/cropper.js"
+            ],
             "server": "src/main.server.ts",
             "prerender": false,
             "ssr": false

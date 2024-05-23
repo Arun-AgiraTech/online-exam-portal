@@ -1,0 +1,19 @@
+img{
+    width: 100%;
+    filter: grayscale(100%);
+}
+
+img:hover {
+    /* transition-delay: 200ms; */
+    filter : grayscale(0%);
+}
+.jc{
+    justify-content: center;
+}
+.main{
+    font-family: monospace;
+    background-color: blanchedalmond;
+}
+.text{
+    font-size: 22px;
+}

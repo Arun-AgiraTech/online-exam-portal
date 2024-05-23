@@ -12,7 +12,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 })
 export class AddQuestionComponent implements OnInit {
   public Editor = ClassicEditor;
-  placeHolder : string = "Question content"
+  placeHolder!: string;
   qId : any;
   qTitle : any;
   question : any = {
@@ -36,6 +36,7 @@ export class AddQuestionComponent implements OnInit {
     // console.log(this.qId);
     this.qTitle = this._route.snapshot.params['title']
     this.question.quiz['qid'] = this.qId;
+    this.placeHolder ="Question content";
   }
   formSubmit() {
     console.log(this.question);

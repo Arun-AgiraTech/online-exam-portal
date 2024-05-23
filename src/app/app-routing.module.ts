@@ -19,6 +19,7 @@ import { AddQuestionComponent } from './pages/admin/add-question/add-question.co
 import { LoadQuizComponent } from './pages/user/load-quiz/load-quiz.component';
 import { InstructionsComponent } from './pages/user/instructions/instructions.component';
 import { StartComponent } from './pages/user/start/start.component';
+import { UpdateQuestionComponent } from './pages/admin/update-question/update-question.component';
 
 const routes: Routes = [
   {
@@ -71,9 +72,13 @@ const routes: Routes = [
         component : ViewQuizQuestionsComponent
       },
       {
+        path: 'update-question/:quesid',
+        component:UpdateQuestionComponent
+      },
+      {
         path:'add-question/:qid/:title',
         component:AddQuestionComponent
-      }
+      },
     ],
     canActivate : [adminGuard], 
   },
